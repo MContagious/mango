@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#primary-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <img src="/images/logo.png" alt="logo">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="primary-nav">
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link "Fruits", to: category_path(@conn, :index, "fruits") %>
+        </li>
+        <li>
+          <%= link "Vegetables", to: category_path(@conn, :index, "vegetables") %>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <%= if @customer do %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= @customer.name %><span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link "Log Out", to: "/logout" %></li>
+            </ul>
+          </li>
+        <% else %>
+            <li><%= link "Register", to: registration_path(@conn, :new), class: "na-link" %></li>
+            <li><%= link "Sign in", to: session_path(@conn, :new), class: "na-link" %></li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+</nav>
